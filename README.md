@@ -16,7 +16,7 @@
 
 ### Association
 * has_many :items
-* has_many :purchase
+* has_many :purchases
 
 
 
@@ -41,7 +41,7 @@
 
 
 
-## purchase table
+## purchases table
 
 | Column | Type       | Options                        |
 |--------|------------|--------------------------------|
@@ -51,21 +51,22 @@
 
 ### Association
 * belongs_to :user
-* has_one :item
-* has_many :address
+* belongs_to :item
+* has_many :addresses
 
 
 
-## address table
+## addresses table
 
-| Column        | Type    | Options                    |
-|---------------|---------|----------------------------|
-| post_code     | string  | null: false                |
-| prefecture_id | integer | null: false                |
-| city          | string  | null: false                |
-| house_number  | string  | null: false                |
-| building_name | string  |                            |
-| phone_number  | string  | null: false , unique: true |
+| Column        | Type       | Options                        |
+|---------------|------------|--------------------------------|
+| post_code     | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false , unique: true     |
+| purchase      | references | null: false, foreign_key: true |
 
 
 ### Association
