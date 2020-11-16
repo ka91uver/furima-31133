@@ -1,0 +1,2 @@
+class CateoryId < ApplicationRecord
+end
