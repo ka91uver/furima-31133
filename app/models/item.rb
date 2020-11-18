@@ -14,7 +14,10 @@ class Item < ApplicationRecord
     validates :item_description
     validates :price, numericality: {only_integer:true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}, format: {with: /\A[0-9]+\z/}
     validates :image
+    validates :category_id, numericality: { other_than: 1 }
+    validates :condition_id, numericality: { other_than: 1 }
+    validates :shipping_fee_id, numericality: { other_than: 1 }
+    validates :ship_from_id, numericality: { other_than: 1 }
+    validates :days_until_shipping_id, numericality: { other_than: 1 }
   end
-  
-  validates :category, :condition, :shipping_fee, :ship_from, :days_until_shipping, numericality: { other_than: 1 }
 end
