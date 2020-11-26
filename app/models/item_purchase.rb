@@ -4,11 +4,11 @@ class ItemPurchase < ApplicationRecord
   attr_accessor :post_code, :ship_from_id, :city, :house_number, :building_name, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
-    validates :post_code, format:{with: /\A\d{3}[-]\d{4}\z/ }
+    validates :post_code, format:{with: /\A[0-9]{3}-[0-9]{4}\z/ }
     validates :ship_from_id, numericality: { other_than: 0 }
     validates :city
     validates :house_number
-    validates :phone_number, format:{with:/\A[0-9]+\z/}, length: {maximum: 11}
+    validates :phone_number, format:{with: /\A[0-9]{11}\z/ }, length: {maximum: 11}
     validates :token
 
   end
