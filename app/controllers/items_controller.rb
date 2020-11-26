@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  # before_action :find_item, only: :order
   before_action :item_collect, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, except: [:index, :show, :new, :create, :destroy]
 
@@ -46,25 +45,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def order
-  #   redirect_to new_order_path and return unless current_user.order.present?
-
-  #   Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
-  #   purchase_token = current_user.order.purchase_token
-  #   Payjp::Charge.create(
-  #     amount: @item.price, 
-  #     purchase: purchase_token,
-  #     currency: 'jpy' 
-  #     )
-  #   ItemOrder.create(item_id: params[:id])
-  #   redirect_to root_path
-  # end
-
   private
-
-  # def find_item
-  #   @item = Item.find(params[:id])
-  # end
 
   def item_collect
     @item = Item.find(params[:id])

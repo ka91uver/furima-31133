@@ -1,5 +1,4 @@
 class ItemPurchase < ApplicationRecord
-  # belongs_to :item
 
   include ActiveModel::Model
   attr_accessor :post_code, :ship_from_id, :city, :house_number, :building_name, :phone_number, :user_id, :item_id, :token
@@ -9,12 +8,9 @@ class ItemPurchase < ApplicationRecord
     validates :ship_from_id, numericality: { other_than: 0 }
     validates :city
     validates :house_number
-    # validates :building_name
     validates :phone_number, format:{with:/\A[0-9]+\z/}, length: {maximum: 11}
     validates :token
-    # validates :user_id
-    # validates :item_id
-    # validates :price
+
   end
 
   def save
