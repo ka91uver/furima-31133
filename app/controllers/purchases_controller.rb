@@ -1,11 +1,11 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :item_collect, only: [:index, :create]
   before_action :move_to_index, only: [:index]
 
   def index
     @item_purchase = ItemPurchase.new
-    if @item.user.id == current_user.id || @item.purchase.present?
+    if @item.user_id == current_user.id || @item.purchase.present?
       redirect_to root_path
     else
       render 'index'
@@ -39,7 +39,6 @@ class PurchasesController < ApplicationController
   end
 
   def item_collect
-    # binding.pry
     @item = Item.find(params[:item_id])
   end
 
