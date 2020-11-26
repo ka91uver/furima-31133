@@ -7,11 +7,10 @@ class PurchasesController < ApplicationController
     @item_purchase = ItemPurchase.new
     if @item.user.id == current_user.id || @item.purchase.present?
       redirect_to root_path
-     else
-       render "index"
+    else
+      render 'index'
     end
   end
-
 
   def create
     @item_purchase = ItemPurchase.new(purchase_params)
@@ -31,7 +30,6 @@ class PurchasesController < ApplicationController
     params.require(:item_purchase).permit(:post_code, :ship_from_id, :city, :house_number, :building_name, :phone_number, :purchase_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
-
   def move_to_index
     if current_user.id == @item.user.id
       redirect_to root_path
@@ -44,9 +42,9 @@ class PurchasesController < ApplicationController
     # binding.pry
     @item = Item.find(params[:item_id])
   end
-  
+
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: purchase_params[:token],

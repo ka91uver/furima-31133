@@ -11,7 +11,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_from
   belongs_to_active_hash :days_until_shipping
 
-
   with_options presence: true do
     validates :item_name
     validates :item_description

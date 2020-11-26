@@ -8,5 +8,4 @@ class ApplicationController < ActionController::Base
       :sign_up, keys: [:nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date]
     )
   end
-
 end
