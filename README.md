@@ -61,13 +61,12 @@
 | Column        | Type       | Options                        |
 |---------------|------------|--------------------------------|
 | post_code     | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
+| ship_from_id  | integer    | null: false                    |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false , unique: true     |
 | purchase      | references | null: false, foreign_key: true |
-<!-- | user          | references | null: false, foreign_key: true | -->
 
 ### Association
 * belongs_to :purchase
