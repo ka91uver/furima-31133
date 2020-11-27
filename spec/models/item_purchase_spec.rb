@@ -38,10 +38,10 @@ RSpec.describe ItemPurchase, type: :model do
         expect(@item_purchase.errors.full_messages).to include("Post code is invalid")
       end
 
-      it 'ship_from_idの値が0では購入できないこと' do
+      it 'ship_from_idの値が1では購入できないこと' do
         @item_purchase.ship_from_id = 0
         @item_purchase.valid?
-        expect(@item_purchase.errors.full_messages).to include("Ship from must be other than 0")
+        expect(@item_purchase.errors.full_messages).to include("Ship from must be other than 1")
       end
 
       it 'cityが空では購入できないこと' do
